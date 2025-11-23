@@ -1,0 +1,746 @@
+@import './styles/variables';
+@import './styles/base';
+
+// Navigation
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+  border-bottom: 1px solid $gray-800;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    @media (min-width: $breakpoint-sm) {
+      padding: 0 1.5rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 0 2rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  &__logo {
+    font-family: $font-mono;
+    font-size: 1.25rem;
+    color: $cyber-blue;
+  }
+
+  &__links {
+    display: none;
+    gap: 2rem;
+
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+    }
+
+    button {
+      color: $text-secondary;
+      background: transparent;
+      font-size: 0.875rem;
+
+      &:hover {
+        color: $cyber-blue;
+      }
+    }
+  }
+}
+
+// Hero Section
+.hero {
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, $cyber-blue, $emerald);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 4.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+    font-family: $font-mono;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__tagline {
+    font-size: 1rem;
+    color: $text-tertiary;
+    max-width: 768px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.125rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+    }
+  }
+}
+
+// Button styles
+.btn {
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all $transition-base;
+
+  &--primary {
+    background: $cyber-blue;
+    color: white;
+
+    &:hover {
+      background: rgba(59, 130, 246, 0.8);
+    }
+  }
+
+  &--secondary {
+    border: 2px solid $cyber-blue;
+    color: $cyber-blue;
+    background: transparent;
+
+    &:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+  }
+}
+
+// Section styles
+.section {
+  padding: 5rem 1rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  &--alt {
+    background: rgba(17, 24, 39, 0.5);
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: $cyber-blue;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+// About Section
+.about {
+  &__container {
+    max-width: 896px;
+    margin: 0 auto;
+  }
+
+  &__text {
+    font-size: 1.125rem;
+    color: $text-secondary;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__stat {
+    background: rgba(10, 10, 10, 0.5);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid $gray-800;
+    text-align: center;
+  }
+
+  &__stat-value {
+    font-family: $font-mono;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $cyber-blue;
+    margin-bottom: 0.5rem;
+  }
+
+  &__stat-label {
+    font-size: 0.875rem;
+    color: $text-tertiary;
+    margin: 0;
+  }
+}
+
+// Professional Journey - Git Commit History Style Timeline
+.timeline {
+  &__container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  position: relative;
+  padding-left: 0;
+  padding-top: 1rem;
+  list-style: none;
+
+  @media (min-width: $breakpoint-md) {
+    padding-left: 200px;
+    
+    // Vertical timeline line
+    &::before {
+      content: '';
+      position: absolute;
+      left: 150px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, 
+        rgba(59, 130, 246, 0.5) 0%,
+        rgba(59, 130, 246, 0.3) 50%,
+        rgba(16, 185, 129, 0.3) 70%,
+        rgba(16, 185, 129, 0.5) 100%);
+      z-index: 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    z-index: 1;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: 150px auto 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--education {
+      .timeline__node {
+        background: $emerald;
+        border-color: $emerald;
+        box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+      }
+
+      .timeline__card {
+        border-color: rgba(16, 185, 129, 0.1);
+      }
+
+      .timeline__card:hover {
+        border-color: rgba(16, 185, 129, 0.3);
+        box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1);
+      }
+    }
+  }
+
+  &__date {
+    display: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 1.5rem;
+    }
+  }
+
+  &__date-text {
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    color: $text-tertiary;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  &__date-mobile {
+    display: block;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $text-tertiary;
+    margin-bottom: 0.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__branch {
+    display: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+  }
+
+  &__node {
+    width: 12px;
+    height: 12px;
+    background: $cyber-blue;
+    border: 2px solid $dark-bg;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+    transition: all $transition-base;
+
+    &--experience {
+      background: $cyber-blue;
+    }
+
+    &--education {
+      background: $emerald;
+      border-color: $dark-bg;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: all $transition-base;
+    backdrop-filter: blur(10px);
+
+    @media (min-width: $breakpoint-md) {
+      padding: 1.75rem;
+    }
+
+    &:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-family: $font-mono;
+    font-weight: 700;
+    color: $cyber-blue;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.375rem;
+    }
+
+    .timeline__item--education & {
+      color: $emerald;
+    }
+  }
+
+  &__company {
+    font-size: 1rem;
+    color: $text-secondary;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.5;
+  }
+
+  &__description {
+    color: $text-tertiary;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+    font-size: 0.9375rem;
+  }
+
+  &__details {
+    color: $text-secondary;
+    font-size: 0.9375rem;
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  &__tag {
+    padding: 0.375rem 0.75rem;
+    background: rgba(59, 130, 246, 0.12);
+    color: $cyber-blue;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    font-size: 0.75rem;
+    border-radius: 0.375rem;
+    font-family: $font-mono;
+    font-weight: 500;
+    transition: all $transition-base;
+    display: inline-block;
+
+    &:hover {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+  }
+}
+
+// Projects Section
+.projects {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    background: rgba(10, 10, 10, 0.5);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid $gray-800;
+    transition: border-color $transition-base;
+
+    &:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-family: $font-mono;
+    font-weight: 600;
+    color: $cyber-blue;
+    margin-bottom: 0.75rem;
+  }
+
+  &__description {
+    color: $text-secondary;
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+
+  &__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__tech-tag {
+    padding: 0.25rem 0.5rem;
+    background: rgba(16, 185, 129, 0.2);
+    color: $emerald;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+    font-family: $font-mono;
+  }
+
+  &__status {
+    font-size: 0.75rem;
+    color: $text-tertiary;
+    margin-bottom: 1rem;
+    font-family: $font-mono;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    color: $cyber-blue;
+    transition: color $transition-base;
+
+    &:hover {
+      color: rgba(59, 130, 246, 0.8);
+    }
+
+    svg {
+      margin-left: 0.25rem;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+
+// Testimonials Section
+.testimonials {
+  &__container {
+    max-width: 896px;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__card {
+    background: rgba(17, 24, 39, 0.5);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid $emerald;
+  }
+
+  &__quote {
+    color: $text-secondary;
+    font-style: italic;
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+
+  &__author {
+    font-weight: 600;
+    color: $cyber-blue;
+  }
+
+  &__title {
+    font-size: 0.875rem;
+    color: $text-tertiary;
+  }
+}
+
+// Contact Section
+.contact {
+  &__container {
+    max-width: 896px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: $text-secondary;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.75;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__methods {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid $gray-800;
+    border-radius: 0.75rem;
+    transition: all $transition-base;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      border-color: $cyber-blue;
+      background: rgba(59, 130, 246, 0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  &__icon {
+    width: 3rem;
+    height: 3rem;
+    color: $cyber-blue;
+    padding: 0.75rem;
+    background: rgba(59, 130, 246, 0.15);
+    border-radius: 0.5rem;
+    transition: all $transition-base;
+
+    .contact__method:hover & {
+      background: rgba(59, 130, 246, 0.25);
+      transform: scale(1.1);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  &__method-title {
+    font-family: $font-mono;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $cyber-blue;
+    margin: 0;
+  }
+
+  &__method-value {
+    font-size: 0.875rem;
+    color: $text-secondary;
+    margin: 0;
+    word-break: break-word;
+  }
+}
+
+// Footer
+.footer {
+  padding: 3rem 1rem;
+  border-top: 1px solid $gray-800;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      gap: 0;
+    }
+
+    > div:first-child {
+      margin-bottom: 1.5rem;
+
+      @media (min-width: $breakpoint-md) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__copyright {
+    color: $text-tertiary;
+    font-family: $font-mono;
+  }
+
+  &__social {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__social-link {
+    color: $text-tertiary;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $cyber-blue;
+    }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+

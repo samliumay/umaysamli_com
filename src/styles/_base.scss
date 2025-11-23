@@ -1,0 +1,62 @@
+@import './variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; // Account for fixed navigation
+}
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  background-color: $dark-bg;
+  color: $text-primary;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-mono;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  transition: color $transition-base;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: all $transition-base;
+}
+
+// Utility classes
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  
+  @media (min-width: $breakpoint-sm) {
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 2rem;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(to right, $cyber-blue, $emerald);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
