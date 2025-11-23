@@ -28,6 +28,7 @@ function App() {
               <button onClick={() => scrollToSection('about')}>About</button>
               <button onClick={() => scrollToSection('experience')}>Experience</button>
               <button onClick={() => scrollToSection('projects')}>Projects</button>
+              <button onClick={() => scrollToSection('references')}>References</button>
               <button onClick={() => scrollToSection('contact')}>Contact</button>
             </div>
           </div>
@@ -362,8 +363,8 @@ function App() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section">
+      {/* References */}
+      <section id="references" className="section">
         <div className="section__container">
           <div className="testimonials__container">
             <motion.div
@@ -373,24 +374,43 @@ function App() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="section__title">References</h2>
-              <div className="testimonials__list">
+              
+              {/* References with PDFs - Vertical Layout */}
+              <div className="testimonials__list testimonials__list--vertical">
                 {[
                   {
-                    quote: "Umay consistently demonstrated exceptional knowledge... Strong theoretical foundation, analytical skills, and problem-solving abilities.",
-                    author: "Dr. Burak Ekici",
-                    title: "University of Oxford"
+                    name: "Burak Ekici",
+                    title: "Senior Researcher at Oxford",
+                    email: "burak.ekici@cs.ox.ac.uk",
+                    phone: "+44 779 636 59 51",
+                    referenceLink: "https://github.com/samliumay/samliumay/blob/main/CVs_and_Letters/Recommendation%20and%20Reference%20Letters/Reference%20Letter%20-%20Burak%20Ekici%20-%20University%20of%20Oxford.pdf",
+                    quote: "Umay consistently demonstrated exceptional knowledge... Strong theoretical foundation, analytical skills, and problem-solving abilities."
                   },
                   {
-                    quote: "The coding and technical skills are superb... An engaged team player, smart, and always willing to tackle new challenges.",
-                    author: "Holger Spohn",
-                    title: "CISO, NATO SHAPE"
+                    name: "Holger Spohn",
+                    title: "CISO, Head of Operational IT & AIM - Candriam (worked at SHAPE together)",
+                    email: "spohni@aol.com / Holger.SPOHN@shape.nato.int",
+                    phone: "Contact via email or reference letter",
+                    referenceLink: "https://github.com/samliumay/samliumay/blob/main/CVs_and_Letters/Recommendation%20and%20Reference%20Letters/Reference%20Letter%20-%20Holger%20Spohn-%20NATO.pdf",
+                    quote: "The coding and technical skills are superb... An engaged team player, smart, and always willing to tackle new challenges."
                   },
                   {
-                    quote: "Displays a unique leadership for teamwork... Whatever work he does, he tries to do it thoroughly and with dedication.",
-                    author: "Dr. Emin Kugu",
-                    title: "TED University"
+                    name: "Ulas Gulec",
+                    title: "CEO at Simovate / Assistant Professor at TED University / Project Consultant at Simsoft",
+                    email: "ulas.gulec@tedu.edu.tr",
+                    phone: "+90 535 765 60 01",
+                    referenceLink: "https://github.com/samliumay/samliumay/blob/main/CVs_and_Letters/Recommendation%20and%20Reference%20Letters/Reference%20Letter%20-%20Ulas%20Gulec%20-%20TED%20University.pdf",
+                    quote: "His writing, research, and analytical thought skills are truly exceptional. He has the ability to analyze a problem and formulate a solution."
+                  },
+                  {
+                    name: "Emin Kuğu",
+                    title: "Assistant Professor at TED University",
+                    email: "emin.kugu@tedu.edu.tr",
+                    phone: "+90 530 692 27 83",
+                    referenceLink: "https://github.com/samliumay/samliumay/blob/main/CVs_and_Letters/Recommendation%20and%20Reference%20Letters/Reference%20Letter%20-%20Emin%20KUGU%20-%20TED%20University.pdf",
+                    quote: "Displays a unique leadership for teamwork... Whatever work he does, he tries to do it thoroughly and with dedication."
                   }
-                ].map((testimonial, idx) => (
+                ].map((ref, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
@@ -399,11 +419,92 @@ function App() {
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                     className="testimonials__card"
                   >
-                    <p className="testimonials__quote">"{testimonial.quote}"</p>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <div>
-                        <p className="testimonials__author">{testimonial.author}</p>
-                        <p className="testimonials__title">{testimonial.title}</p>
+                    {ref.quote && (
+                      <p className="testimonials__quote">"{ref.quote}"</p>
+                    )}
+                    <div style={{ marginTop: ref.quote ? '1rem' : '0' }}>
+                      <p className="testimonials__author">{ref.name}</p>
+                      <p className="testimonials__title">{ref.title}</p>
+                      <div style={{ marginTop: '0.75rem', fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <p style={{ margin: '0.25rem 0' }}>
+                          <strong>Email:</strong> <a href={`mailto:${ref.email.split(' / ')[0]}`} style={{ color: '#3b82f6', textDecoration: 'none' }}>{ref.email}</a>
+                        </p>
+                        <p style={{ margin: '0.25rem 0' }}>
+                          <strong>Phone:</strong> {ref.phone}
+                        </p>
+                        {ref.referenceLink && (
+                          <p style={{ margin: '0.25rem 0' }}>
+                            <strong>Reference Letter:</strong>{' '}
+                            <a 
+                              href={ref.referenceLink} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              style={{ color: '#3b82f6', textDecoration: 'none' }}
+                            >
+                              View PDF <ExternalLink style={{ marginLeft: '0.25rem', width: '0.75rem', height: '0.75rem', display: 'inline-block', verticalAlign: 'middle' }} />
+                            </a>
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* References without PDFs - Horizontal Layout */}
+              <div className="testimonials__list testimonials__list--horizontal">
+                {[
+                  {
+                    name: "Andrea Accetta",
+                    title: "Head of Cyber Operations at SHAPE - NATO",
+                    email: "cybersec.itanavy@yahoo.com",
+                    phone: "+32 490 49 99 63",
+                    referenceLink: null,
+                    quote: null
+                  },
+                  {
+                    name: "Kadri Yetis",
+                    title: "Chief Technology Officer, VP of Software Engineering, MS",
+                    email: "usamli@yahoo.com",
+                    phone: "+90 533 454 17 99",
+                    referenceLink: null,
+                    quote: null
+                  },
+                  {
+                    name: "Leo Fehmi Aslan",
+                    title: "Senior Cyber Security Analyst at NATO/NCIA",
+                    email: "fehmiaslan38@gmail.com",
+                    phone: "+34 649 99 84 12",
+                    referenceLink: null,
+                    quote: null
+                  },
+                  {
+                    name: "Luke O'Brien",
+                    title: "Senior Cyber Security Engineer - NATO/CDT",
+                    email: "OBrien.Luke@hq.nato.int / Luke.OBrien@devops.ncia.nato.int",
+                    phone: "+44 7975 94 86 98",
+                    referenceLink: null,
+                    quote: null
+                  }
+                ].map((ref, idx) => (
+                  <motion.div
+                    key={`no-pdf-${idx}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    className="testimonials__card"
+                  >
+                    <div>
+                      <p className="testimonials__author">{ref.name}</p>
+                      <p className="testimonials__title">{ref.title}</p>
+                      <div style={{ marginTop: '0.75rem', fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <p style={{ margin: '0.25rem 0' }}>
+                          <strong>Email:</strong> <a href={`mailto:${ref.email.split(' / ')[0]}`} style={{ color: '#3b82f6', textDecoration: 'none' }}>{ref.email}</a>
+                        </p>
+                        <p style={{ margin: '0.25rem 0' }}>
+                          <strong>Phone:</strong> {ref.phone}
+                        </p>
                       </div>
                     </div>
                   </motion.div>

@@ -552,10 +552,10 @@
   }
 }
 
-// Testimonials Section
+// Testimonials / References Section
 .testimonials {
   &__container {
-    max-width: 896px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
@@ -563,6 +563,33 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    // Vertical layout for references with PDFs
+    &--vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    // Horizontal grid layout for references without PDFs
+    &--horizontal {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+
+      @media (min-width: $breakpoint-md) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: $breakpoint-lg) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (min-width: 1400px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
   }
 
   &__card {
@@ -570,6 +597,16 @@
     padding: 1.5rem;
     border-radius: 0.5rem;
     border-left: 4px solid $emerald;
+    transition: transform $transition-base, border-color $transition-base;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(16, 185, 129, 0.8);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);
+    }
   }
 
   &__quote {
@@ -577,16 +614,21 @@
     font-style: italic;
     margin-bottom: 1rem;
     line-height: 1.75;
+    font-size: 0.9375rem;
   }
 
   &__author {
     font-weight: 600;
     color: $cyber-blue;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
   }
 
   &__title {
     font-size: 0.875rem;
     color: $text-tertiary;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
   }
 }
 
