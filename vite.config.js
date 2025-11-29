@@ -19,4 +19,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    fs: {
+      strict: true,
+      deny: [path.resolve(__dirname, 'dist')],
+    },
+  },
+  optimizeDeps: {
+    entries: ['src/**/*.{js,jsx,ts,tsx}'],
+  },
 })

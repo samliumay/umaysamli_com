@@ -1,0 +1,127 @@
+// SCSS Mixins for Terminal Effects
+
+// CRT Scanlines Mixin
+@mixin crt-scanlines {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 65, 0.03),
+      rgba(0, 255, 65, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// Text Glow Effect
+@mixin text-glow($color: $night-vision-green, $intensity: 0.8) {
+  text-shadow: 
+    0 0 5px rgba($color, $intensity),
+    0 0 10px rgba($color, $intensity * 0.6),
+    0 0 15px rgba($color, $intensity * 0.4);
+}
+
+// Glitch Effect
+@mixin glitch-effect {
+  position: relative;
+  
+  &:hover {
+    animation: glitch 0.3s infinite;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: skew(0.5deg);
+  }
+  10% {
+    clip-path: inset(92% 0 1% 0);
+    transform: skew(0.5deg);
+  }
+  20% {
+    clip-path: inset(43% 0 1% 0);
+    transform: skew(0.5deg);
+  }
+  30% {
+    clip-path: inset(25% 0 58% 0);
+    transform: skew(0.5deg);
+  }
+  40% {
+    clip-path: inset(54% 0 7% 0);
+    transform: skew(0.5deg);
+  }
+  50% {
+    clip-path: inset(58% 0 43% 0);
+    transform: skew(0.5deg);
+  }
+  60% {
+    clip-path: inset(92% 0 4% 0);
+    transform: skew(0.5deg);
+  }
+  70% {
+    clip-path: inset(23% 0 69% 0);
+    transform: skew(0.5deg);
+  }
+  80% {
+    clip-path: inset(54% 0 24% 0);
+    transform: skew(0.5deg);
+  }
+  90% {
+    clip-path: inset(8% 0 14% 0);
+    transform: skew(0.5deg);
+  }
+  100% {
+    clip-path: inset(80% 0 6% 0);
+    transform: skew(0.5deg);
+  }
+}
+
+// Chromatic Aberration
+@mixin chromatic-aberration {
+  position: relative;
+  
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  &::before {
+    color: rgba(255, 0, 0, 0.5);
+    transform: translate(-1px, 0);
+    z-index: -1;
+  }
+  
+  &::after {
+    color: rgba(0, 0, 255, 0.5);
+    transform: translate(1px, 0);
+    z-index: -2;
+  }
+}
+
+// Terminal Border
+@mixin terminal-border {
+  border: 1px solid rgba($night-vision-green, 0.3);
+  background: rgba($night-vision-green, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 10px rgba($night-vision-green, 0.2),
+    inset 0 0 10px rgba($night-vision-green, 0.1);
+}
+
